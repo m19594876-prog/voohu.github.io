@@ -1,0 +1,53 @@
+Figuring out PoE transformer wattage for 802.3bt Type 4 — what’s the right way to size it?I’m currently working on a PoE design targeting 802.3bt Type 4 (up to ~90W at the PSE side), and I realized pretty quickly that sizing the transformer isn’t as straightforward as just matching the headline power number.
+At first I thought:
+90W system → pick a ~90W transformer
+But that assumption didn’t hold up once I started looking deeper into efficiency, losses, and real operating conditions.
+What I understand about 802.3bt power levels
+For Type 4, the system power can go up to ~90W at the source, but the actual available power at the device side is lower due to cable and conversion losses.
+Typical numbers I’m working with:
+~90W at PSE 
+~70–75W usable at PD after losses (depending on cable length, efficiency, etc.) 
+So already, the transformer is not just “90W rated” — it needs to handle more than what the load sees.
+Where wattage sizing gets tricky
+From what I’ve seen so far, transformer sizing depends on more than just output power:
+1. Efficiency assumptions
+If your DC/DC stage is, say, 90% efficient:
+👉 Transformer needs to handle input power > output power
+2. Thermal limits
+In compact PoE designs (like IP cameras or access points), temperature rise becomes a constraint.
+A transformer running close to its limit may pass electrically but fail thermally.
+3. Topology matters
+Depending on whether you're using:
+Flyback 
+Forward 
+Active clamp 
+The stress on the transformer changes quite a bit.
+Push the same wattage through different topologies → different results.
+4. Peak vs continuous power
+PoE loads are not always constant.
+Startup, inrush, or transient loads can exceed average power.
+Rough way I’m approaching it (so far)
+Instead of matching nominal wattage, I started thinking like this:
+Target output power (e.g. 70W usable) 
+Divide by efficiency (~0.9) → ~78W input 
+Add margin (20–30%) 
+👉 That puts transformer capability closer to ~95–110W range
+Which is quite a bit higher than the “label” power.
+Something that helped during evaluation
+While looking at different transformer options, I noticed that some suppliers provide more than just basic specs.
+For example, when I checked with VOOHU Electronics Technology Co., Ltd., what I found useful wasn’t just the wattage rating, but guidance around:
+Recommended power derating under PoE conditions 
+Thermal considerations in compact layouts 
+Matching transformer behavior with specific topologies 
+That kind of input made it easier to avoid under-sizing early in the design.
+One thing I didn’t expect
+I initially treated transformer wattage like a fixed number.
+But it feels more like:
+It’s a combination of thermal limit + core behavior + topology + efficiency
+Not just a single rating.
+Still figuring this out
+For those who’ve designed around 802.3bt Type 4:
+How much margin do you usually add when sizing transformers? 
+Do you base it more on thermal testing or calculations? 
+Any rules of thumb that actually hold up in production? 
+Trying to avoid redesigning this later due to underestimating power stress.
