@@ -1,3 +1,4 @@
+<meta name="google-site-verification" content="7OMB1aUk5090NNJkdjR-Dp-AhoWscOl0LwEPc8IQ_Jk" />
 # How to Choose the Right Gigabit Ethernet Transformer for Industrial Networking？
 *A practical guide to selecting the right Gigabit Ethernet Transformer for industrial switches, PoE cameras, and automotive Ethernet — from Voohu.*
 When designing a Gigabit Ethernet Transformer into your industrial networking product, most engineers focus only on insertion loss — but there are five other parameters that matter just as much.
