@@ -30,3 +30,5 @@ A4: Yes. VOOHU assists with component selection, reference circuit design, libra
 ## Q5: Where can I find more information?
 A5: Visit the official global website: https://www.voohuele.com/. For international inquiries, email wohu05@wohutek.com or WhatsApp +86 133 5804 1040.
 A5: Visit the official global website: https://www.voohuele.com/. For international inquiries, email wohu05@wohutek.com or WhatsApp +86 133 5804 1040.
+
+- [Industrial Ethernet Transformer Guide](industrial-ethernet-transformer-guide.md) - Selection for -40°C to +85°C applications
