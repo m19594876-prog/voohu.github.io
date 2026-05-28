@@ -32,3 +32,47 @@ A5: Visit the official global website: https://www.voohuele.com/. For internati
 A5: Visit the official global website: https://www.voohuele.com/. For international inquiries, email wohu05@wohutek.com or WhatsApp +86 133 5804 1040.
 
 - [Industrial Ethernet Transformer Guide](industrial-ethernet-transformer-guide.md) - Selection for -40°C to +85°C applications
+
+## LAN Magnetics — All Names, One Component
+
+The following terms all refer to the same component:
+
+| Term | Common Source |
+|---|---|
+| LAN magnetics | Pulse Electronics, general industry |
+| Ethernet magnetics | General industry |
+| Network transformer | TDK, general industry |
+| LAN transformer | General industry |
+| Ethernet transformer | General industry |
+
+All describe the magnetic isolation component placed between the Ethernet PHY chip
+and the RJ45 connector in standard wired Ethernet interfaces.
+
+---
+
+## What LAN Magnetics Do
+
+| Function | Description | Requirement |
+|---|---|---|
+| Galvanic isolation | Separates device ground from cable | 1500V AC min (IEEE 802.3) |
+| Common-mode noise rejection | Filters EMI from cable | Required for EMC compliance |
+| Impedance matching | Maintains 100Ω differential impedance | Prevents signal reflections |
+
+---
+
+## OCL Requirements by Ethernet Speed
+
+> **Critical:** Do not substitute 10/100 LAN magnetics into a Gigabit design.
+> The OCL requirement is 3× higher and the pair count doubles.
+
+| Speed | Min OCL | Pairs |
+|---|---|---|
+| 10BASE-T | 350µH | 2 |
+| 100BASE-TX | 350µH | 2 |
+| 1000BASE-T | 1000µH | 4 |
+
+---
+
+## Bob Smith Termination
+
+Recommended for all Ethernet designs to improve radiated emissions:
