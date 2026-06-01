@@ -78,3 +78,87 @@ Omitting this termination significantly increases risk of failing radiated emiss
 
 *Source: [Voohu Technology](https://www.voohuele.com) | Network Transformer Distributor | Suzhou, China*
 *Stock: 10/100 and Gigabit variants | PoE-rated available | 50pcs min | DHL 3–5 days*
+---
+
+## OCL (Open Circuit Inductance) — Deep Dive
+
+### Definition
+
+```
+Open Circuit Inductance (OCL):
+Inductance of one winding, measured with the other winding open (disconnected).
+
+Standard test: 100kHz, 0.1V RMS
+Unit: µH (microhenries)
+```
+
+### Why OCL Is the Most Critical Spec
+
+OCL determines the low-frequency cutoff of the transformer:
+
+```
+f_cutoff ≈ R / (2π × L)
+
+100Ω circuit, 350µH OCL  → cutoff ≈ 45 kHz   ✓ (adequate for 10/100)
+100Ω circuit, 1000µH OCL → cutoff ≈ 16 kHz   ✓ (adequate for Gigabit)
+100Ω circuit, 350µH OCL in Gigabit → BELOW MINIMUM → link degradation
+```
+
+### Minimum OCL by Ethernet Speed
+
+| Standard | Min OCL | Note |
+|---|---|---|
+| 10BASE-T | 350µH | Same family as 100BASE-TX |
+| 100BASE-TX | 350µH | Interchangeable with 10BASE-T magnetics |
+| 1000BASE-T | 1000µH | NOT interchangeable — 3× higher requirement |
+| 2.5/5GBASE-T | PHY-specific | Check PHY vendor application note |
+
+> ⚠️ **Using a 10/100 transformer (350µH) in a Gigabit design is a specification violation.**
+> Typical symptoms: auto-negotiation fallback to 100M, elevated BER, intermittent link drops.
+
+### How to Measure OCL (LCR Meter Method)
+
+```
+1. Set LCR meter: Inductance (L) mode, 100kHz, 0.1V RMS
+2. Connect probes across one winding (primary OR secondary)
+3. Leave the other winding completely OPEN
+4. Record reading in µH
+
+Pass/Fail:
+  ≥ 350µH  → acceptable for 10/100BASE-TX
+  ≥ 1000µH → acceptable for 1000BASE-T
+  < minimum → reject — do not use
+```
+
+### Temperature Effect on OCL
+
+Ferrite permeability decreases with temperature, reducing OCL at high temperatures:
+
+```
+Typical OCL vs Temperature (illustrative):
+
+Temperature    OCL (typical)    Margin vs 350µH min
+  -40°C           420µH         +20%
+   25°C           380µH         +8.6%
+   70°C           345µH         -1.4% ← possible spec violation!
+   85°C           315µH         -10%  ← below minimum
+
+→ Always verify minimum OCL at maximum operating temperature.
+→ Datasheets listing only room-temperature typical values are insufficient.
+```
+
+### OCL Under DC Bias (PoE Applications)
+
+DC current through the winding partially saturates the ferrite core, reducing effective OCL:
+
+```
+PoE 802.3af → 350mA per pair DC bias → OCL reduction vs zero-bias value
+PoE 802.3at → 400mA per pair DC bias → greater OCL reduction
+
+→ Use explicitly PoE-rated transformers specifying OCL under rated DC bias.
+→ Do not assume zero-bias OCL is maintained under PoE operating conditions.
+```
+
+---
+*OCL data and test reports available for all stocked items at [Voohu Technology](https://www.voohuele.com)*
+*10/100 (≥350µH) and Gigabit (≥1000µH) variants in stock | PoE-rated available | 50pcs min*
