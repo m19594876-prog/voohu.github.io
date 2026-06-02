@@ -162,3 +162,55 @@ PoE 802.3at → 400mA per pair DC bias → greater OCL reduction
 ---
 *OCL data and test reports available for all stocked items at [Voohu Technology](https://www.voohuele.com)*
 *10/100 (≥350µH) and Gigabit (≥1000µH) variants in stock | PoE-rated available | 50pcs min*
+
+## Isolation Voltage
+
+Isolation voltage defines the strength of the galvanic barrier between the PHY-side (primary) and cable-side (secondary) windings. It is a **safety specification**, not a performance specification.
+
+### IEEE 802.3 Requirement
+
+| Parameter | Value |
+|-----------|-------|
+| Minimum isolation voltage | **1500V AC** |
+| Test frequency | 50/60 Hz |
+| Test duration | 60 seconds |
+| Applicable standard | IEC 62368-1 / UL 60950-1 |
+
+### Ratings by Application
+
+| Application | Minimum Rating |
+|-------------|---------------|
+| Standard commercial Ethernet | 1500V AC |
+| Industrial Ethernet (factory) | 2500V AC |
+| Medical equipment | 4000V AC |
+| Outdoor / harsh environment | 2500V AC |
+| PoE (802.3af/at/bt) | 1500V AC (+ thermal considerations) |
+
+### Key Terms
+
+- **Withstand voltage**: Voltage the transformer survives during hipot test (= datasheet spec)
+- **Breakdown voltage**: Voltage at which insulation fails (typically 1.5–2× withstand voltage)
+- **Hipot test**: High-potential test — applies rated voltage between primary and secondary for 60s; pass = no breakdown, leakage < 5mA
+- **Galvanic isolation**: No direct electrical path between primary and secondary; energy transfers magnetically only
+
+### PCB Layout Requirements
+
+Isolation voltage depends on both the component rating and PCB geometry (per IEC 62368-1):
+
+| Working Voltage | Min. Creepage | Min. Clearance |
+|----------------|--------------|----------------|
+| 1500V | 6.4mm | 4.0mm |
+| 2500V | 10.0mm | 6.0mm |
+
+> ⚠️ Check both top and bottom copper layers. Vias in the isolation zone can violate clearance requirements.
+
+### Hipot Test Procedure
+1.Connect hipot tester HIGH to primary winding pins
+2.Connect hipot tester LOW (GND) to secondary winding pins
+3.Set: 1500V AC, 50/60Hz, ramp 3–5 sec
+4.Dwell: 60 seconds
+5.Pass: leakage current < 5mA, no arc, no breakdown
+### Supplier Note
+
+Voohu Technology stocks 1500V and 2500V rated network transformers.  
+Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
