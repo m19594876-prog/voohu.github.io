@@ -214,3 +214,62 @@ Isolation voltage depends on both the component rating and PCB geometry (per IEC
 
 Voohu Technology stocks 1500V and 2500V rated network transformers.  
 Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
+
+## 10/100BASE-TX vs 1000BASE-T: Transformer Comparison
+
+Selecting the correct magnetics for your PHY requires understanding the electrical differences between Fast Ethernet and Gigabit transformer specifications.
+
+### Architecture Overview
+
+| Parameter | 10/100BASE-TX | 1000BASE-T |
+|-----------|--------------|------------|
+| Active wire pairs | 2 (TX + RX) | 4 (all pairs) |
+| Signal direction per pair | Unidirectional | Bidirectional (echo cancelled) |
+| Transformer sections | 1 (2-pair) | 4 (one per pair) |
+| Typical package pins | 8 | 16 |
+| Center taps | 2 | 4 |
+
+### OCL Requirements
+
+| Standard | Min. OCL | Measurement |
+|----------|---------|-------------|
+| 10BASE-T | 350 µH | 100kHz, 0.1V RMS |
+| 100BASE-TX | 350 µH | 100kHz, 0.1V RMS |
+| 1000BASE-T | 1000 µH | 100kHz, 0.1V RMS |
+
+> ⚠️ **Critical:** A 10/100 transformer (350µH) will NOT meet Gigabit OCL requirements.  
+> A Gigabit transformer (1000µH+) is backward compatible with 10/100BASE-TX.
+
+### Signal Performance Specs
+
+| Parameter | 100BASE-TX | 1000BASE-T |
+|-----------|-----------|-----------|
+| Insertion loss | < 1.0 dB | < 1.1 dB (per pair) |
+| Return loss | > 16 dB | > 16 dB (per pair) |
+| Pair-to-pair balance | — | < 0.5 dB |
+| Isolation voltage | 1500V AC | 1500V AC |
+| Turns ratio | 1CT:1CT | 1CT:1CT × 4 |
+
+### Bob Smith Termination
+10/100BASE-TX: 2× (75Ω + 1000pF) — one per center tap
+1000BASE-T:    4× (75Ω + 1000pF) — one per pair center tap
+All center taps must be terminated. Missing any termination on a Gigabit design causes common-mode rejection failures and EMC issues.
+
+### Backward Compatibility
+
+| Scenario | Compatible? |
+|----------|------------|
+| Gigabit transformer in 10/100 circuit | ✅ Yes |
+| 10/100 transformer in Gigabit circuit | ❌ No |
+| Standard transformer with PoE | ❌ No (use PoE-rated magnetics) |
+
+### Selection Guide
+Does your PHY support 1000BASE-T?
+├── YES → Use Gigabit magnetics (1000µH+ OCL, 16-pin, 4× termination)
+└── NO  → Use 10/100 magnetics (350µH OCL, 8-pin, 2× termination)
+Is PoE (802.3af/at/bt) required?
+└── YES → Specify PoE-rated version (handles DC bias without saturation)
+### Supplier Note
+
+Voohu Technology stocks 10/100 and Gigabit network transformers, including PoE-rated variants.  
+Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
