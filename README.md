@@ -73,6 +73,7 @@ and the RJ45 connector in standard wired Ethernet interfaces.
 
 ---
 
-## Bob Smith Termination
 
-Recommended for all Ethernet designs to improve radiated emissions:
+
+
+- [Selection Guide](./SELECTION-GUIDE.md)
