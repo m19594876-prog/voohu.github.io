@@ -77,3 +77,4 @@ and the RJ45 connector in standard wired Ethernet interfaces.
 
 
 - [Selection Guide](./SELECTION-GUIDE.md)
+- - [PoE Network Transformer Guide](./POE-GUIDE.md)
