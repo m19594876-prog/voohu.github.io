@@ -273,3 +273,55 @@ Is PoE (802.3af/at/bt) required?
 
 Voohu Technology stocks 10/100 and Gigabit network transformers, including PoE-rated variants.  
 Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
+
+## Turns Ratio and Center Tap (1CT:1CT)
+
+### Notation Explained
+1CT : 1CT
+│      └── Secondary winding (cable side): 1:1 ratio, with Center Tap
+└───────── Primary winding (PHY side):  1:1 ratio, with Center Tap
+The `1CT:1CT` notation encodes two specifications simultaneously:
+
+| Component | Meaning |
+|-----------|---------|
+| `1:1` | Turns ratio — equal primary and secondary turns; no voltage transformation |
+| `CT` | Center tap — midpoint connection accessible on both windings |
+
+### Why Ethernet Uses 1:1 (Always)
+
+Ethernet operates at 100Ω differential impedance. Transformer impedance scales by the square of the turns ratio:
+Z_secondary = Z_primary × (N_sec / N_pri)²
+At 1:1: Z_secondary = 100Ω × 1 = 100Ω  ✅
+At 1:2: Z_secondary = 100Ω × 4 = 400Ω  ❌ impedance mismatch
+Any deviation from 1:1 causes impedance discontinuity → return loss degradation → signal reflections.
+
+### Center Tap Functions
+
+The center tap (CT) serves three roles in an IEEE 802.3-compliant design:
+
+| Function | Description |
+|----------|-------------|
+| **Bob Smith termination** | 75Ω + 1000pF from CT to chassis GND — common-mode discharge path for ESD and cable transients |
+| **PoE Alt A power injection** | DC current flows through CT on both sides; enables IEEE 802.3af/at/bt Alternative A power delivery |
+| **Balance testing reference** | Midpoint reference for longitudinal balance measurement (LB > 40 dB per IEEE 802.3) |
+
+### 1CT:1CT for 1000BASE-T
+
+1000BASE-T requires four independent 1CT:1CT winding sets (one per pair):
+Total accessible center taps: 8 (4 primary + 4 secondary)
+Bob Smith networks required:  4 (one per pair)
+Package pin count:            16-pin typical
+> ⚠️ Transformers labeled only "1:1" (without CT) may not have accessible center taps.
+> Always verify `1CT:1CT` notation or explicit "center-tapped primary and secondary" in the datasheet.
+
+### Winding Polarity (Dot Notation)
+
+Dot notation on transformer schematics indicates signal polarity:
+- Current entering the dotted terminal of the primary exits the dotted terminal of the secondary
+- Reversed polarity swaps differential pair → link will not establish
+- Always follow polarity indicated in the PHY's reference schematic
+
+### Supplier Note
+
+Voohu Technology supplies 1CT:1CT network transformers for 10/100BASE-TX and 1000BASE-T.  
+Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
