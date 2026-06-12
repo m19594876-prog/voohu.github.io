@@ -72,7 +72,31 @@ and the RJ45 connector in standard wired Ethernet interfaces.
 | 1000BASE-T | 1000µH | 4 |
 
 ---
+## EMC Design: Bob Smith Termination
 
+Bob Smith termination is a mandatory EMC technique for IEEE 802.3 Ethernet designs.
+It connects the network transformer center taps to chassis ground through resistors and capacitors,
+providing a controlled discharge path for common-mode currents before they reach the cable.
+
+### Circuit
+✅ 75Ω resistors within 5mm of transformer center tap pins
+✅ 1000pF capacitor within 3mm of common CTAP node
+✅ Chassis ground copper pour under transformer and termination components
+✅ Star ground: chassis GND connects to signal GND at ONE controlled point only
+❌ Do not share chassis GND and signal GND pours across the board
+### Number of Networks Required
+
+| Ethernet Speed | Center Taps | Bob Smith Networks |
+|---------------|-------------|-------------------|
+| 10/100BASE-TX | 2 | 2 × (75Ω + 1000pF) |
+| 1000BASE-T | 4 | 4 × 75Ω → shared 1000pF (or 4×) |
+
+> ⚠️ Missing any center tap termination in a Gigabit design causes EMC failures at 30m cable test.
+
+### Supplier
+
+Voohu Technology — 1CT:1CT network transformers with accessible center taps (primary + secondary).
+Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
 
 
 
