@@ -325,3 +325,88 @@ Dot notation on transformer schematics indicates signal polarity:
 
 Voohu Technology supplies 1CT:1CT network transformers for 10/100BASE-TX and 1000BASE-T.  
 Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
+
+## Insertion Loss
+
+Insertion loss (IL) measures signal power lost when passing through the transformer.
+It is a key indicator of signal integrity performance.
+
+### Definition
+IL = 20 × log10(V_out / V_in)   [dB, expressed as magnitude]
+Example: V_in = 100mV, V_out = 89.1mV
+
+IL = 20 × log10(89.1/100) = 1.00 dB
+
+### IEEE 802.3 Limits
+
+| Standard | Max Insertion Loss | Frequency Range |
+|----------|--------------------|-----------------|
+| 10BASE-T | < 1.0 dB | 100kHz – 10MHz |
+| 100BASE-TX | < 1.0 dB | 1MHz – 100MHz |
+| 1000BASE-T | < 1.1 dB (per pair) | 1MHz – 100MHz |
+
+Typical measured values for quality parts: **0.3–0.6 dB** across passband.
+
+### Frequency Dependence
+Insertion Loss vs. Frequency (typical shape):
+High IL ─┐
+
+│\          (low-freq rollup: insufficient OCL)
+
+│ 
+
+Low IL ──┤  ─────────────────  (passband: 1–100 MHz, flat, minimal loss)
+
+│                   
+
+High IL ─┘                    \ (high-freq rollup: leakage inductance + Cinter-winding)
+     DC    1MHz      100MHz    1GHz
+
+### Physical Causes
+
+| Source | Frequency Effect | Mitigation |
+|--------|-----------------|------------|
+| Winding DCR | Flat (increases with temp) | Low-DCR wire, tight winding |
+| Core hysteresis | Increases with freq | High-quality ferrite grade |
+| Leakage inductance | Increases with freq | Tight inter-winding coupling |
+| Inter-winding capacitance | Increases with freq | Controlled winding geometry |
+
+> **Temperature note:** DCR increases ~0.39%/°C. IL is always higher at elevated temperatures.
+> For PoE designs with self-heating, verify IL at maximum operating temperature.
+
+### Measurement Method (VNA S21)
+Setup:
+
+VNA Port 1 ──[100Ω]── Primary winding
+
+VNA Port 2 ──[100Ω]── Secondary winding
+S21 reading (dB) = Insertion Loss at each frequency
+Sweep: 100kHz – 200MHz (wider than spec for full characterization)
+
+Termination: 100Ω differential at both ports (mandatory — results invalid without)
+
+### 1000BASE-T: Pair-to-Pair Balance
+
+All 4 pairs must meet IL spec independently:
+
+| Requirement | Value |
+|-------------|-------|
+| Max IL per pair | < 1.1 dB |
+| Pair-to-pair amplitude balance | < 0.5 dB |
+
+Imbalance between pairs degrades PAM-5 receiver SNR margin.
+
+### Datasheet Evaluation
+
+| ✅ Good Practice | ❌ Red Flag |
+|-----------------|------------|
+| Full IL vs. frequency curve | Single-frequency value only |
+| Maximum guaranteed value | "Typical" value only |
+| Test conditions stated (100Ω termination) | No test conditions |
+| Temperature range covered | 25°C data only |
+| Pair balance data (for 1000BASE-T) | Missing for Gigabit parts |
+
+### Supplier Note
+
+Voohu Technology provides full insertion loss characterization with frequency curves.
+Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
