@@ -405,8 +405,88 @@ Imbalance between pairs degrades PAM-5 receiver SNR margin.
 | Test conditions stated (100Ω termination) | No test conditions |
 | Temperature range covered | 25°C data only |
 | Pair balance data (for 1000BASE-T) | Missing for Gigabit parts |
+## Return Loss
+
+Return loss measures the impedance match quality at the transformer port.
+It quantifies how much signal reflects back toward the source due to impedance mismatch.
+
+### Definition
+Reflection coefficient: Γ = (Z_load - Z_source) / (Z_load + Z_source)
+Return Loss (dB) = -20 × log10(|Γ|)   [higher = better match = less reflection]
+At perfect match (Z_load = Z_source = 100Ω): Γ = 0 → RL = ∞
+
+IEEE 802.3 minimum: RL > 16 dB → |Γ| < 0.158 → < 2.5% power reflected
+
+### IEEE 802.3 Requirements
+
+| Standard | Min. Return Loss | Frequency Range |
+|----------|-----------------|-----------------|
+| 100BASE-TX | > 16 dB | 1MHz – 100MHz |
+| 1000BASE-T | > 16 dB (per pair) | 1MHz – 100MHz |
+
+Typical quality values: **18–25 dB** across passband.
+
+### Reference Table
+
+| Return Loss | Reflection Coeff. |Γ| | VSWR | Reflected Power |
+|-------------|---------------------|------|----------------|
+| 10 dB | 0.316 | 1.93:1 | 10.0% |
+| **16 dB** | **0.158** | **1.38:1** | **2.5%** ← 802.3 limit |
+| 20 dB | 0.100 | 1.22:1 | 1.0% |
+| 26 dB | 0.050 | 1.11:1 | 0.25% |
+| 30 dB | 0.032 | 1.07:1 | 0.10% |
+
+### Physical Causes of Degraded Return Loss
+
+| Cause | Frequency Range | Effect |
+|-------|----------------|--------|
+| Magnetizing inductance | < 1 MHz | Low presented impedance |
+| Leakage inductance | > 30 MHz | Series impedance increase |
+| Inter-winding capacitance | > 100 MHz | Parallel impedance reduction |
+| Turns ratio deviation | All | Scales impedance by N² |
+| PCB trace impedance | All | Added in series with transformer |
+
+### Measurement Method (VNA S11)
+Setup:
+
+VNA Port 1 ──── Transformer Primary
+
+Transformer Secondary ──[100Ω]── GND
+S11 reading (dB) = Return Loss at each frequency
+
+Sweep: 100kHz – 200MHz
+Repeat with ports swapped for secondary-side return loss.
+
+Calibrate VNA before measurement — poor calibration invalidates results.
+
+### Return Loss vs. Insertion Loss
+
+| Parameter | S-param | Measures | 802.3 Limit |
+|-----------|---------|----------|-------------|
+| Return loss | S11 | Signal reflected at input | > 16 dB |
+| Insertion loss | S21 | Signal transmitted to output | < 1.0 dB |
+
+> Both must independently meet specification. They are not complementary measurements.
+
+### PCB Layout Impact
+
+Measured system return loss includes transformer + PCB contributions:
+✅ 100Ω differential traces (PHY to transformer) → minimal PCB contribution
+
+❌ 85Ω traces (5mm): ~3–5 dB additional return loss degradation
+
+❌ 2 vias in path (~1pF each): ~1–2 dB at 100MHz
+
+Verify trace impedance with stackup calculator before attributing poor return loss to the component.
+
+### Supplier Note
+
+Voohu Technology provides full S11/S21 characterization for all network transformer products.
+Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
 
 ### Supplier Note
 
 Voohu Technology provides full insertion loss characterization with frequency curves.
 Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
+
+
