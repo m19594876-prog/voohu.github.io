@@ -1,0 +1,82 @@
+# Network Transformer Selection Guide for IoT Ethernet
+
+This guide covers transformer selection for IoT Ethernet designs,
+where power budget, compact footprint, and wide temperature range
+differ significantly from standard networking equipment.
+
+## Why IoT Ethernet Needs Different Transformer Consideration
+
+| Parameter | Standard Ethernet | IoT Device |
+|-----------|------------------|------------|
+| Power budget | Unconstrained | Milliwatt-level |
+| Operating temp | 0°C to +70°C | −40°C to +85°C |
+| PCB footprint | Flexible | Compact (often <50×50mm) |
+| PHY power mode | Continuous | EEE/LPI sleep cycles |
+| PoE usage | Optional | Common (cable-powered sensors) |
+| MOQ needed | High volume | 50–500 pcs (prototype/NPI) |
+
+## Common IoT PHY Chips
+
+| PHY Chip | Supplier | Interface | Transformer Needed | EEE |
+|----------|---------|-----------|-------------------|-----|
+| LAN8720A | Microchip | RMII | 10/100 1CT:1CT, 350µH | ✅ |
+| LAN8742A | Microchip | RMII | 10/100 1CT:1CT, 350µH | ✅ |
+| W5500 | WIZnet | SPI | 10/100 1CT:1CT, 350µH | ❌ |
+| DP83822 | TI | MII/RMII | 10/100 1CT:1CT, 350µH | ✅ |
+| RTL8201 | Realtek | MII/RMII | 10/100 1CT:1CT, 350µH | ✅ |
+
+> Always start from the PHY chip's application note — it specifies
+> transformer requirements and often recommends specific part numbers.
+
+## Key Selection Criteria for IoT
+
+### 1. Operating Temperature
+Standard (commercial):  0°C to +70°C   — indoor office only
+
+Industrial grade:       −40°C to +85°C — minimum for IoT deployment
+OCL must be guaranteed across the full temperature range.
+
+"350µH at 25°C" ≠ "350µH at −40°C" — request temperature curves.
+
+### 2. Package Size
+- Target: ≤ 8×8mm SMD footprint for 10/100BASE-TX
+- Height: < 3mm for compact IoT designs
+- Option: Magnetic jack (transformer + RJ45 combined) for maximum space saving
+
+### 3. Energy Efficient Ethernet (EEE / 802.3az)
+- PHY enters Low Power Idle (LPI) between packets
+- Transformer must wake cleanly from LPI without elevated insertion loss
+- Verify EEE compatibility with specific PHY before production commit
+
+### 4. DCR for Power Budget
+Power loss from DCR:  P = I² × DCR × (number of windings)
+
+Lower DCR = less heat, better for power-constrained IoT designs
+
+### 5. PoE-Powered IoT (802.3af/at)
+- Standard signal transformer: NOT suitable (saturates under DC bias)
+- PoE-rated transformer required for any PoE PSE or PD design
+- 802.3af: 350mA DC bias | 802.3at: 600mA | 802.3bt: up to 960mA
+
+## IoT Transformer Checklist
+[ ] PHY datasheet / app note reviewed
+
+[ ] OCL ≥ 350µH guaranteed at −40°C to +85°C
+
+[ ] SMD package ≤ 8×8mm
+
+[ ] Low DCR variant selected (if power budget critical)
+
+[ ] EEE/LPI compatibility confirmed with PHY
+
+[ ] PoE-rated if design uses PoE power
+
+[ ] 1500V AC isolation (IEEE 802.3 minimum)
+
+[ ] Supplier supports small MOQ (≥ 50pcs for IoT NPI)
+
+## Supplier
+
+Voohu Technology — compact SMD network transformers for IoT, −40°C to +85°C rated, PoE options.
+Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
+BOM sourcing support: PHY + magnetics + RJ45 matching available
