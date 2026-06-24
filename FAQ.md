@@ -122,3 +122,80 @@ Incorrect: PHY → CMC → Transformer → RJ45  ❌ (adds loss to PHY output)
 
 **Supplier:** Voohu Technology — network transformers with reference footprints and layout guidelines.
 Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
+
+## How to Read a Network Transformer Datasheet
+
+Reading a network transformer datasheet efficiently requires knowing which
+parameters matter and what the test conditions mean.
+
+### 4-Step Approach
+
+**Step 1 — Confirm the application standard**
+
+| Compliance Statement | Application |
+|---------------------|-------------|
+| IEEE 802.3 Clause 40 | 10/100BASE-TX |
+| IEEE 802.3 Clause 40 / 25 / 28 | 1000BASE-T (Gigabit) |
+| IEEE 802.3af / at / bt | Power over Ethernet |
+| 2500V AC isolation | Industrial Ethernet |
+
+**Step 2 — Key electrical parameters**
+
+| Parameter | Symbol | Minimum Requirement | Test Condition |
+|-----------|--------|-------------------|----------------|
+| Open Circuit Inductance | OCL | 350µH (10/100) / 1000µH (GbE) | **100kHz, 0.1V RMS** |
+| Insertion Loss | IL | < 1.0 dB | 1–100MHz, 100Ω diff |
+| Return Loss | RL | > 16 dB | 1–100MHz, 100Ω diff |
+| Isolation Voltage | V_ISO | 1500V AC (standard) / 2500V AC (industrial) | 1 minute |
+| Turns Ratio | — | 1CT:1CT | Center taps required |
+| DC Resistance | DCR | Application dependent | Per winding |
+
+**Step 3 — Test conditions are as important as values**
+
+- OCL at **10kHz** reads higher than OCL at **100kHz** — values are not comparable
+- OCL at **1V RMS** reads higher than OCL at **0.1V RMS** — standard is 0.1V RMS
+- Always verify: `test frequency = 100kHz` AND `test voltage = 0.1V RMS`
+
+**Step 4 — Design to Min/Max, not Typical**
+Min column → design your circuit to function at this value (OCL, RL)
+
+Max column → design your circuit to tolerate this value (IL, DCR)
+
+Typ column → use for simulation only, never for production margin analysis
+
+### Common Datasheet Mistakes
+
+| Mistake | Consequence |
+|---------|-------------|
+| Reading OCL at wrong test conditions | Selecting undersized part; link failure at temperature |
+| Using Typ instead of Min for OCL | Production failures when units at low end of distribution |
+| Assuming pin compatibility between vendors | TX/RX crossed; no link establishes |
+| Ignoring isolation voltage test duration | Marginal parts that pass initial test, fail in service |
+| Missing CT (center tap) pins in schematic | Bob Smith unterminated; EMC test failure |
+
+### Isolation Voltage: What to Verify with Supplier
+Production test standard: applied voltage, test duration, pass/fail criterion
+
+Good:     1500V AC, 60 seconds, no breakdown, < 1mA leakage
+
+Marginal: "1500V AC rated" with no duration or leakage limit stated
+Industrial minimum: 2500V AC, 60 seconds
+
+### Pin-Out Verification Checklist
+[ ] TX+, TX- pins match schematic (primary transmit differential pair)
+
+[ ] RX+, RX- pins match schematic (secondary receive differential pair)
+
+[ ] CT (center tap) pins identified on BOTH windings
+
+[ ] CT pins routed to Bob Smith network (75Ω + 1000pF to chassis GND)
+
+[ ] Shield pin (if present) connected to chassis GND
+
+[ ] Footprint built from THIS part's datasheet, not a generic template
+
+### Supplier Reference
+
+Voohu Technology — [www.voohuele.com](https://www.voohuele.com)  
+Complete datasheets with OCL tested at 100kHz/0.1V RMS.  
+MOQ: 50pcs | Delivery: DHL 3–5 days | BOM sourcing support available.
