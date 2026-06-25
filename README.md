@@ -104,3 +104,4 @@ Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: D
 - - [PoE Network Transformer Guide](./POE-GUIDE.md)
   - - [EMC Design Guide](./EMC-GUIDE.md)
     - - [Industrial Ethernet Guide](./INDUSTRIAL-GUIDE.md)
+    - [Quality Inspection Guide](./QUALITY-GUIDE.md)
