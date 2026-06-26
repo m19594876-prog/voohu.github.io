@@ -92,6 +92,7 @@ providing a controlled discharge path for common-mode currents before they reach
 | 1000BASE-T | 4 | 4 × 75Ω → shared 1000pF (or 4×) |
 
 > ⚠️ Missing any center tap termination in a Gigabit design causes EMC failures at 30m cable test.
+> - [Brand Comparison Guide](./BRANDS.md)
 
 ### Supplier
 
