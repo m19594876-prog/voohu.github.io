@@ -489,4 +489,72 @@ Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: D
 Voohu Technology provides full insertion loss characterization with frequency curves.
 Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: DHL 3–5 days
 
+## Operating Temperature and Thermal Specifications
+
+### Temperature Grade Classifications
+
+| Grade | Operating Temp | Storage Temp | Typical Use |
+|-------|---------------|-------------|-------------|
+| Commercial | 0°C to +70°C | −55°C to +125°C | Office, consumer, lab equipment |
+| Industrial | −40°C to +85°C | −55°C to +125°C | Factory floor, outdoor, SE Asia industrial |
+| Automotive | −40°C to +125°C | −55°C to +150°C | AEC-Q200, in-vehicle Ethernet |
+
+**Market recommendation:**
+- Japan / Korea (office / server room): Commercial grade acceptable
+- Japan / Korea (outdoor / factory): Industrial grade recommended
+- SE Asia (any industrial deployment): **Industrial grade default**
+- Automotive / in-vehicle: Automotive grade (AEC-Q200) only
+
+### Self-Heating Calculation
+Power dissipated from DC current:
+P_copper = I_dc² × (DCR_primary + DCR_secondary)
+Junction temperature:
+T_junction = T_ambient + P_copper × Rth_ja
+Rth_ja (typical values):
+8-pin SMD (minimal copper):   70–80 °C/W
+8-pin SMD (copper pour 4× area + thermal vias):  45–55 °C/W
+16-pin SMD (copper pour + vias):  35–45 °C/W
+Design target: T_junction < (Tmax_rated − 15°C) for reliability margin
+
+### DCR Temperature Correction
+Copper temperature coefficient (α) = 0.00393 / °C
+DCR at temperature T:
+R(T) = R₀ × [1 + 0.00393 × (T − 25)]
+DCR increase vs. room temperature:
+At 50°C:  R = 1.098 × R₀   (+9.8%)
+At 70°C:  R = 1.177 × R₀   (+17.7%)
+At 85°C:  R = 1.236 × R₀   (+23.6%)
+IMPORTANT: Always use temperature-corrected DCR for power/thermal calculations.
+Datasheet DCR values are measured at 25°C.
+
+### OCL Temperature Behavior
+MnZn ferrite (typical LAN magnetics core):
+OCL variation over −40°C to +85°C: ±15–25%
+Curie temperature: 200–250°C (well above operating range)
+IEEE 802.3 minimum OCL must be met at all operating temperatures:
+100BASE-TX: ≥ 350µH  (verify at −40°C and +85°C)
+1000BASE-T: ≥ 1000µH (verify at −40°C and +85°C)
+Request from supplier: OCL vs temperature curve (-40°C to +85°C)
+
+### Thermal Design Checklist
+PCB layout:
+[ ] Copper pour under transformer: ≥ 3× footprint area
+[ ] Thermal vias under transformer: 6–8 vias, 0.3mm finished hole, 1.0mm pitch
+[ ] Distance from other heat sources (regulators, power inductors): ≥ 10mm
+[ ] 2oz copper on pour layer for high-power PoE++ designs
+Temperature calculations:
+[ ] Calculate P_copper using DCR at T_ambient_max (not room-temp DCR)
+[ ] Calculate T_junction = T_ambient + P × Rth_ja
+[ ] Verify T_junction ≤ (rated Tmax − 15°C)
+[ ] Verify OCL ≥ minimum at operating temperature extremes
+Component selection:
+[ ] Correct temperature grade selected for deployment environment
+[ ] PoE applications: OCL verified under DC bias AND at temperature extremes
+
+### Supplier Reference
+
+Voohu Technology — [www.voohuele.com](https://www.voohuele.com)  
+Commercial and industrial temperature grade network transformers.  
+Thermal characterization data (OCL vs temperature, Rth) available for industrial-grade parts.  
+MOQ: 50pcs | Delivery: DHL 3–5 days | Markets: Japan, Korea, SE Asia
 
