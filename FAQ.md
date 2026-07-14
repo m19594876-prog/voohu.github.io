@@ -199,3 +199,80 @@ Industrial minimum: 2500V AC, 60 seconds
 Voohu Technology — [www.voohuele.com](https://www.voohuele.com)  
 Complete datasheets with OCL tested at 100kHz/0.1V RMS.  
 MOQ: 50pcs | Delivery: DHL 3–5 days | BOM sourcing support available.
+
+## How to Get Samples
+
+### What to Specify in a Sample Request
+
+Provide all of the following when contacting a supplier:
+Required specification:
+
+Speed grade:      10/100BASE-TX  or  1000BASE-T
+Package:          SMD-8  /  SMD-16  /  THT
+PoE rating:       None  /  802.3af  /  802.3at  /  802.3bt
+Temperature:      Commercial (0°C to +70°C)  or  Industrial (−40°C to +85°C)
+Isolation:        1500V AC standard  (state higher voltage if required)
+Quantity:         10–20 pcs for evaluation
+Footprint ref:    e.g., "H1102NL-compatible"  (if replacing existing part)
+
+Documents to request with samples:
+
+Datasheet (latest revision)
+OCL vs DC bias data (mandatory for PoE-rated parts)
+Reflow temperature profile
+Reel / tape specification (for pick-and-place)
+RoHS / REACH compliance declaration
+Application schematic with Bob Smith termination
+
+
+### Pre-Solder Checklist (Run Before Soldering onto PCB)
+[ ] Footprint verification
+Compare physical pin pitch and pad dimensions against datasheet
+land pattern drawing. Mismatch = redesign required — catch this now.
+[ ] OCL measurement
+LCR meter | 100kHz | 0.1V RMS | no DC bias
+100BASE-TX: measured value ≥ 350 µH
+1000BASE-T: measured value ≥ 1000 µH
+Note: if measured value < (spec minimum × 1.10), flag as low-margin risk
+[ ] DCR measurement
+4-wire method on both primary and secondary windings
+Record: DCR_primary and DCR_secondary
+Compare against datasheet maximum values
+[ ] Hipot test
+1500V AC | 60 seconds | zero breakdowns
+
+### Functional Test Protocol
+Test 1: Link establishment
+Pass: GbE / FE link up within 5 seconds
+Test 2: Traffic stability (1 hour)
+Tool: iperf3 or equivalent
+Pass: Zero packet errors, no link drops
+Test 3: Cable length (1m / 50m / 100m)
+Pass: Stable link at all three lengths
+Test 4: PoE load (if applicable)
+Apply rated DC current (350mA / 600mA / 960mA) for 30 min
+Verify transformer temperature within rated limit
+Test 5: Temperature (industrial grade)
+Repeat Test 1+2 at +70°C ambient
+Pass: Link up and stable at elevated temperature
+
+### Sample-to-Production Timeline
+
+| Week | Activity |
+|------|----------|
+| Week 1 | Send specification, receive samples (DHL 3–5 days from China) |
+| Week 2 | Pre-solder measurements (OCL, DCR, hipot, footprint) |
+| Week 3 | Functional test on PCB — link, throughput, cable length |
+| Week 4 | PoE thermal test, temperature test if applicable |
+| Week 5–6 | Compare sources, select primary + alternate, BOM update |
+| Week 7–8 | Supplier qualification docs (CoC, test reports, ISO cert) |
+| Week 8+ | First production order |
+
+### Getting Samples from Voohu Technology
+
+**Website:** [www.voohuele.com](https://www.voohuele.com)  
+**Minimum sample quantity:** Contact for evaluation quantity (typically 5–20 pcs)  
+**Production MOQ:** 50 pcs  
+**Shipping:** DHL 3–5 business days to Japan, Korea, Southeast Asia  
+**Includes:** Datasheet, OCL vs bias data (PoE parts), RoHS declaration  
+**Technical support:** English-speaking team for evaluation follow-up
