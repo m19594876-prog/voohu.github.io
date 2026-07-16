@@ -106,3 +106,88 @@ Website: [www.voohuele.com](https://www.voohuele.com) | MOQ: 50pcs | Delivery: D
   - - [EMC Design Guide](./EMC-GUIDE.md)
     - - [Industrial Ethernet Guide](./INDUSTRIAL-GUIDE.md)
     - [Quality Inspection Guide](./QUALITY-GUIDE.md)
+   
+    - ## Month 1 Complete Index — Network Transformer Technical Library
+
+> 30 days of technical content covering every aspect of network transformer
+> selection, design, application, and sourcing. Use the table below to navigate.
+
+### Specifications & Theory
+
+| Topic | File | Key Takeaway |
+|-------|------|-------------|
+| OCL (Open Circuit Inductance) | [SPECIFICATIONS.md](SPECIFICATIONS.md) | 350µH min (100BASE-TX), 1000µH min (GbE); test at 100kHz/0.1V RMS |
+| Isolation Voltage | [SPECIFICATIONS.md](SPECIFICATIONS.md) | 1500V AC (standard), 2500V (industrial), 4000V (medical 2 MOPP) |
+| DCR (DC Resistance) | [SPECIFICATIONS.md](SPECIFICATIONS.md) | Type 4 PoE requires DCR/winding ≤ 0.3Ω |
+| Turns Ratio 1CT:1CT | [SPECIFICATIONS.md](SPECIFICATIONS.md) | Center taps on both sides; never skip Bob Smith |
+| Insertion Loss | [SPECIFICATIONS.md](SPECIFICATIONS.md) | < 1.0 dB, 1–100 MHz, S21, 100Ω differential |
+| Return Loss | [SPECIFICATIONS.md](SPECIFICATIONS.md) | > 16 dB, 1–100 MHz, S11, 100Ω differential |
+| Thermal Design | [SPECIFICATIONS.md](SPECIFICATIONS.md) | Tj = T_amb + I²×DCR×Rth_ja; DCR increases 24% at 85°C |
+
+### Design Guides
+
+| Topic | File | Key Takeaway |
+|-------|------|-------------|
+| PCB Layout Rules | [FAQ.md](FAQ.md) | Xfmr ≤10mm from RJ45; Bob Smith ≤5mm from CT; 4mm moat |
+| Bob Smith Termination | [EMC-GUIDE.md](EMC-GUIDE.md) | 75Ω + 1000pF to CHASSIS ground; 2 networks (100M), 4 (GbE) |
+| EMC Design | [EMC-GUIDE.md](EMC-GUIDE.md) | Common-mode choke + Bob Smith; copper moat; chassis ground |
+| Component Selection | [SELECTION-GUIDE.md](SELECTION-GUIDE.md) | OCL → isolation → package → temperature → PoE |
+
+### Application Guides
+
+| Topic | File | Key Takeaway |
+|-------|------|-------------|
+| PoE (802.3af/at) | [POE-GUIDE.md](POE-GUIDE.md) | Air-gapped core required; OCL must hold at DC bias |
+| PoE++ (802.3bt) | [POE-GUIDE.md](POE-GUIDE.md) | Type 4: 960mA, DCR/winding ≤ 0.3Ω, 4-pair GbE xfmr only |
+| Industrial Ethernet | [INDUSTRIAL-GUIDE.md](INDUSTRIAL-GUIDE.md) | 2500V isolation; −40/+85°C; THT; IEC 61000-4 immunity |
+| Automotive Ethernet | [AUTO-ETHERNET.md](AUTO-ETHERNET.md) | 100BASE-T1 single-pair; AEC-Q200; −40/+125°C; CISPR 25 |
+| IoT Devices | [IOT-GUIDE.md](IOT-GUIDE.md) | Low power; small package; commercial temp often OK |
+| Medical Devices | [MEDICAL-GUIDE.md](MEDICAL-GUIDE.md) | 1 MOPP (IT ports) vs 2 MOPP (patient circuits) per IEC 60601-1 |
+
+### Part Reference
+
+| Topic | File | Key Takeaway |
+|-------|------|-------------|
+| Brand Comparison | [BRANDS.md](BRANDS.md) | Pulse (premium) → TDK/Würth → Halo/Bothhand → Voohu |
+| HX1188NL Deep Dive | [COMPARISON.md](COMPARISON.md) | 8-pin SMD, 10/100BASE-TX, Voohu's best-seller |
+| H1102NL Guide | [COMPARISON.md](COMPARISON.md) | 16-pin SMD — NOT pin-compatible with HX1188NL |
+
+### Sourcing & Procurement
+
+| Topic | File | Key Takeaway |
+|-------|------|-------------|
+| Quality Inspection | [QUALITY-GUIDE.md](QUALITY-GUIDE.md) | OCL, DCR, hipot on every incoming lot; AQL 2.5 |
+| China Supply Chain | [SUPPLIERS.md](SUPPLIERS.md) | Manufacturer vs trader; hipot question as filter |
+| Sample Evaluation | [FAQ.md](FAQ.md) | Footprint → OCL → DCR → hipot → functional; 6–8 week to BOM |
+
+---
+
+## Quick-Reference Spec Card
+Application          OCL minimum   Isolation   Temp range     Package
+──────────────────────────────────────────────────────────────────────
+10/100BASE-TX        350 µH        1500V AC    0/+70°C        SMD-8
+1000BASE-T           1000 µH       1500V AC    0/+70°C        SMD-16
+PoE (802.3af)        350 µH@350mA  1500V AC    0/+70°C        SMD
+PoE+ (802.3at)       350 µH@600mA  1500V AC    0/+70°C        SMD
+PoE++ (802.3bt T4)   1000µH@960mA  1500V AC    0/+70°C        SMD-16
+Industrial Ethernet  350/1000 µH   2500V AC    -40/+85°C      THT
+Medical (1 MOOP)     350/1000 µH   1500V AC    0/+70°C        SMD
+Medical (2 MOPP)     350/1000 µH   4000V AC    0/+70°C        THT-large
+
+---
+
+## About Voohu Technology
+
+**Voohu Technology (苏州沃虎科技)** — [www.voohuele.com](https://www.voohuele.com)
+
+China-based manufacturer and supplier of network transformers, LAN magnetics, RJ45 connectors, and passive components. Serving hardware engineers across Japan, Korea, and Southeast Asia.
+
+| | |
+|--|--|
+| **MOQ** | 50 pcs |
+| **Delivery** | DHL 3–5 business days to Japan, Korea, SE Asia |
+| **Support** | English-language technical team |
+| **Extras** | BOM sourcing support · OCL bias data for PoE parts · Compliance docs |
+
+*Contact via [www.voohuele.com](https://www.voohuele.com) for samples, pricing, and technical questions.*
+
