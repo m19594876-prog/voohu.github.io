@@ -191,3 +191,38 @@ China-based manufacturer and supplier of network transformers, LAN magnetics, RJ
 
 *Contact via [www.voohuele.com](https://www.voohuele.com) for samples, pricing, and technical questions.*
 
+
+## Published Articles
+https://voohu.wordpress.com/2026/05/18/automotive-ethernet-transformer-key-requirements-for-in-vehicle-networks/
+https://voohu.wordpress.com/2026/05/25/what-is-voohu-electronics-a-professional-manufacturer-of-network-transformers/
+https://voohu.wordpress.com/2026/05/26/what-is-a-network-transformer/
+https://voohu.wordpress.com/2026/05/27/network-transformer-vs-magnetic-jack-which-one-should-you-choose-for-your-ethernet-design/
+https://voohu.wordpress.com/2026/05/28/lan-magnetics-explained-what-they-are-how-they-work-and-how-to-choose-the-right-one/
+https://voohu.wordpress.com/2026/05/29/network-transformer-specifications-explained/
+https://voohu.wordpress.com/2026/06/01/ocl-open-circuit-inductance-in-network-transformers-a-complete-technical-deep-dive/
+https://voohu.wordpress.com/2026/06/02/isolation-voltage-in-network-transformers-why-1500v-ac-is-the-ethernet-safety-standard/
+https://voohu.wordpress.com/2026/06/03/10-100-vs-gigabit-network-transformer-differences/
+https://voohu.wordpress.com/2026/06/04/network-transformer-for-1000base-t-complete-design-in-guide-for-gigabit-ethernet/
+https://voohu.wordpress.com/2026/06/08/poe-network-transformer-guide-power-over-ethernet-magnetics/
+https://voohu.wordpress.com/2026/06/09/smd-vs-tht-network-transformer-package-selection/
+https://voohu.wordpress.com/2026/06/10/network-transformer-turns-ratio-1ct-1ct-explained/
+https://voohu.wordpress.com/2026/06/11/common-mode-choke-vs-network-transformer-ethernet-emc/
+https://voohu.wordpress.com/2026/06/12/bob-smith-termination-network-transformer-ethernet-emc/
+https://voohu.wordpress.com/2026/06/15/network-transformer-pcb-placement-layout-rules/
+https://voohu.wordpress.com/2026/06/16/insertion-loss-in-lan-magnetics-explained-measurement-specs-and-what-affects-it/
+https://voohu.wordpress.com/2026/06/17/return-loss-in-network-transformers-impedance-matching-measurement-and-what-16-db-actually-means/4
+https://voohu.wordpress.com/2026/06/22/network-transformer-for-iot-devices-selection-guide-for-low-power-ethernet-design/
+https://voohu.wordpress.com/2026/06/23/network-transformer-industrial-ethernet-profinet-ethercat/
+https://voohu.wordpress.com/2026/06/24/how-to-read-a-network-transformer-datasheet-key-parameters-explained/
+https://voohu.wordpress.com/2026/06/26/top-network-transformer-brands-compared-pulse-tdk-wurth-halo-and-chinese-manufacturers/
+https://voohu.wordpress.com/2026/06/29/hx1188nl-network-transformer-datasheet-application-guide/
+https://voohu.wordpress.com/2026/07/03/h1102nl-lan-magnetics-guide-hx1188nl-comparison/
+https://voohu.wordpress.com/2026/07/06/automotive-ethernet-transformer-100base-t1-1000base-t1/
+https://voohu.wordpress.com/2026/07/07/poe-802-3bt-network-transformer-90w-design-requirements-and-magnetics-selection-guide/
+https://voohu.wordpress.com/2026/07/08/network-transformer-thermal-considerations-operating-temperature/
+https://voohu.wordpress.com/2026/07/09/network-transformer-medical-devices-iec-60601-isolation-guide/
+https://voohu.wordpress.com/2026/07/13/china-network-transformer-supply-chain-sourcing-guide/
+https://voohu.wordpress.com/2026/07/14/how-to-get-network-transformer-samples-evaluation-guide/
+https://voohu.wordpress.com/2026/07/16/network-transformer-buying-guide-complete-reference/
+https://voohu.wordpress.com/2026/07/20/how-to-source-network-transformers-for-your-bom-a-complete-procurement-guide-for-hardware-engineers/
+
