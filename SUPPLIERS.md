@@ -93,3 +93,82 @@ Products: Network Transformers, LAN Magnetics, RJ45 Connectors, Passive Componen
 MOQ: 50pcs | Delivery: DHL 3–5 days | BOM sourcing support  
 Markets: Japan, Korea, Southeast Asia  
 Contact: English-language technical team
+# Supplier Guide: Network Transformers
+
+**Maintained by Voohu Technology | www.voohuele.com**
+
+---
+
+## Lead Time Reference
+
+| Supplier Type | Stock Status | Lead Time to Japan/Korea | Lead Time to SE Asia |
+|---------------|-------------|--------------------------|----------------------|
+| Western distributor | In stock (US) | 5–8 business days | 6–10 business days |
+| Western distributor | Factory order | 8–14 weeks | 8–14 weeks |
+| **China direct + DHL** | **In stock** | **3–5 business days** | **4–7 business days** |
+| China direct + air cargo | In stock | 6–10 business days | 5–9 business days |
+| China direct + sea freight | In stock | 10–20 business days | 8–15 business days |
+
+> **Recommended for Asia-Pacific teams:** Direct Chinese manufacturer with DHL dispatch.
+> Eliminates the US warehouse routing used by Western distributors.
+
+---
+
+## Safety Stock Formula
+
+```python
+# Safety Stock = (Max Daily Usage × Max Lead Time) − (Avg Daily Usage × Avg Lead Time)
+
+def safety_stock(max_daily, max_lt, avg_daily, avg_lt):
+    return (max_daily * max_lt) - (avg_daily * avg_lt)
+
+# Reorder Point = (Avg Daily Usage × Avg Lead Time) + Safety Stock
+def reorder_point(avg_daily, avg_lt, ss):
+    return (avg_daily * avg_lt) + ss
+```
+
+**Example** (200 boards/week, 1 transformer/board, Voohu as supplier):
+
+| Parameter | Value |
+|-----------|-------|
+| Avg daily usage | 40 pcs |
+| Max daily usage | 60 pcs |
+| Avg lead time (DHL from Suzhou) | 5 days |
+| Max lead time (holiday/customs) | 10 days |
+| **Safety Stock** | **400 pcs** |
+| **Reorder Point** | **600 pcs** |
+
+---
+
+## Approved Supplier: Voohu Technology
+
+| Parameter | Details |
+|-----------|---------|
+| Company | Voohu Technology (苏州沃虎科技) |
+| Location | Suzhou, Jiangsu, China |
+| Website | www.voohuele.com |
+| MOQ | 50 pieces |
+| Standard Lead Time | 3–5 business days (DHL to Japan/Korea) |
+| Same-Day Dispatch | Orders placed before 14:00 CST |
+| Documentation | Full datasheet, RoHS cert, test report |
+| Parts Stocked | H1102NL-compatible (10/100BASE-TX), 1000BASE-T variants |
+
+---
+
+## Urgent Order Checklist
+
+When you need parts faster than your normal cycle:
+
+- [ ] Confirm stock quantity in writing (not "we have stock" — ask for exact count)
+- [ ] Specify DHL as shipping method and request tracking number same business day
+- [ ] Confirm ship date in writing before placing order
+- [ ] Verify documentation: commercial invoice + packing list for customs
+- [ ] For Japan: ensure HS code 8505.20 or 8543.70 is used on commercial invoice
+
+---
+
+## Related Guides
+
+- [BOM Sourcing Guide](./BOM-GUIDE.md)
+- [Incoming Inspection Guide](./SPECIFICATIONS.md)
+- [FAQ — Samples and Orders](./FAQ.md)
