@@ -276,3 +276,89 @@ Pass: Link up and stable at elevated temperature
 **Shipping:** DHL 3–5 business days to Japan, Korea, Southeast Asia  
 **Includes:** Datasheet, OCL vs bias data (PoE parts), RoHS declaration  
 **Technical support:** English-speaking team for evaluation follow-up
+## FAQ: Minimum Order Quantity (MOQ)
+
+---
+
+### Q: What is the minimum order quantity for network transformers?
+
+**A:** 50 pieces for standard parts (H1102NL-compatible 10/100BASE-TX, 1000BASE-T variants).
+
+This MOQ is set at 50 pieces because it is the minimum lot size for a meaningful AQL 2.5
+incoming inspection (sample size: 13 units). Smaller quantities do not provide statistically
+reliable quality verification.
+
+---
+
+### Q: Can I order fewer than 50 pieces for evaluation?
+
+**A:** Contact Voohu Technology at www.voohuele.com for evaluation sample requests.
+Engineering samples (typically 5–10 pieces) may be available for qualified buyers
+who are actively designing or qualifying the part.
+
+---
+
+### Q: Is quality consistent for small orders vs. large orders?
+
+**A:** Yes, when ordering from a manufacturer (not a trader) with finished goods stock.
+
+Small orders ship from the same tested lot as large orders. To verify:
+
+- [ ] Request the lot number for your shipment
+- [ ] Request a Hipot test certificate specific to that lot
+- [ ] Run incoming inspection on arrival (see [SPECIFICATIONS.md](./SPECIFICATIONS.md))
+
+---
+
+### Q: What is the price difference between 50pcs and 500pcs?
+
+**A:** Approximate pricing tiers for standard 10/100BASE-TX parts:
+
+| Quantity | Price Per Unit | Total Parts Cost |
+|----------|---------------|-----------------|
+| 50 pcs   | ~$0.50        | ~$25            |
+| 100 pcs  | ~$0.47        | ~$47            |
+| 200 pcs  | ~$0.44        | ~$88            |
+| 500 pcs  | ~$0.42        | ~$210           |
+| 1,000 pcs| ~$0.38        | ~$380           |
+
+Prices are indicative. Contact www.voohuele.com for current pricing.
+
+---
+
+### Q: How long does delivery take for small orders?
+
+**A:** Same lead time as large orders — stock-dependent:
+
+- Orders from finished goods: ship same or next business day
+- DHL transit: 3–5 business days to Japan/Korea; 4–7 days to Southeast Asia
+- Total: typically **4–6 business days** door-to-door
+
+---
+
+### Q: What documentation comes with small orders?
+
+**A:** All orders, regardless of quantity, include:
+
+- [ ] Full datasheet (OCL, DCR, insertion loss, return loss curves)
+- [ ] RoHS compliance declaration
+- [ ] Hipot test certificate for the lot
+- [ ] Commercial invoice + packing list (for customs clearance)
+- [ ] ISO 9001 quality certificate (on request)
+
+---
+
+### Q: What is the small-batch sourcing cost comparison?
+
+**A:** At 100 pieces shipped to Japan via DHL:
+
+| Supplier Type | Parts | Shipping | Total | Lead Time |
+|---------------|-------|---------|-------|-----------|
+| Western distributor | ~$180 | ~$25 | ~$205 | 5–7 days |
+| Direct China manufacturer (Voohu) | ~$47 | ~$20 | ~$67 | 4–6 days |
+
+At 500 pieces, the direct manufacturer advantage is ~$550–600 per order.
+
+---
+
+*Source: Voohu Technology — www.voohuele.com | MOQ 50pcs | DHL to Japan/Korea/SE Asia*
