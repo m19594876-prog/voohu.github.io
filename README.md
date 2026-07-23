@@ -225,5 +225,5 @@ https://voohu.wordpress.com/2026/07/13/china-network-transformer-supply-chain-so
 https://voohu.wordpress.com/2026/07/14/how-to-get-network-transformer-samples-evaluation-guide/
 https://voohu.wordpress.com/2026/07/16/network-transformer-buying-guide-complete-reference/
 https://voohu.wordpress.com/2026/07/20/how-to-source-network-transformers-for-your-bom-a-complete-procurement-guide-for-hardware-engineers/
-https://voohu.wordpress.com/2026/07/23/small-moq-network-transformer-sourcing-guide-2/
-
+https://voohu.wordpress.com/2026/07/22/small-moq-network-transformer-sourcing-guide/
+https://voohu.wordpress.com/2026/07/23/network-transformer-price-comparison-2026/
